@@ -105,3 +105,41 @@ cacheSolve <- function(x, ...) {
       out
 }
 
+
+
+#################################################################################
+## Testing Function                                                            ##
+##                                                                             ##
+## Inputs:                                                                     ##
+## size: (o) a sizexsize matriz will be used to measure compute vs read time   ##
+##                                                                             ##
+## Output:                                                                     ##
+## a list with time comsumption satistics for compute vs read                  ##
+#################################################################################
+# Q: Is it that faster?
+# A: Yehh! It looks it is! ;)
+#
+# > IsItFaster(3000)
+# $Compute
+# user  system elapsed 
+# 148.656   0.051 149.689 
+# 
+# $Cache
+# user  system elapsed 
+# 0.033   0.013   0.048
+
+IsItFaster <- function(size=500){
+      
+      # creates a size x size matrix to invert
+      m <- matrix(rnorm(size*size),size,size)
+      # creates 'Cache Matrix' object (could have passed 'm' as parameter 'x')
+      myMatrixObject <- makeCacheMatrix()  
+      # lets CM know what matrix to invert (not needed if passed before as 'x')
+      myMatrixObject$SetMatrix(m)         
+      # returns Inverse of 'm' by computing it...
+      compute_time <-system.time(invisible(cacheSolve(myMatrixObject)))
+      # ... or by reading it from cache (2nd request over the same matrix)
+      cache_time <- system.time(invisible(cacheSolve(myMatrixObject)))
+      
+      list(Compute=compute_time,Cache=cache_time)
+}

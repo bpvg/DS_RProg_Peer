@@ -1,10 +1,15 @@
-## Put comments here that give an overall description of what your
-## functions do
+#################################################################################
+## The present set of functins are intended to allow computing the inverse of  ##
+## a given matrix and store this result in memory for later retrieval without  ##
+## new computations.                                                           ##
+##                                                                             ##
+## For further details, please read the comments on each function.             ##
+#################################################################################
 
 
 #################################################################################
 ## This function works on a OOP-like philosophy, implementing the CacheMatrix  ##
-## object and its outside interface.                                           ##
+## 'object' and its outside interface.                                         ##
 ## It heavily depends on R's lexical scoping rules allowing all the functions  ##
 ## defined inside the 'class' to access the same environment (the one in which ##
 ## the function itself is defined) and therefore cross-manipulate the data.    ##
@@ -86,7 +91,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## IM is needed.                                                               ##
 ##                                                                             ##
 ## Inputs:                                                                     ##
-## x: (m) a "Cache Matrix" object                                              ##
+## x: (m) a 'Cache Matrix' object                                              ##
 ##                                                                             ##
 ## Output:                                                                     ##
 ## Returns a 'matrix' inside a 'list' object which label indicates the data    ##

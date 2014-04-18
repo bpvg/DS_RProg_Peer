@@ -6,7 +6,7 @@
 ## This function works on a OOP-like philosophy, implementing the CacheMatrix  ##
 ## object and its outside interface.                                           ##
 ## It heavily depends on R's lexical scoping rules allowing all the functions  ##
-## defined inside the 'calls' to access the same environment (the one in which ##
+## defined inside the 'class' to access the same environment (the one in which ##
 ## the function itself is defined) and therefore cross-manipulate the data.    ##
 ##                                                                             ##
 ## Inputs:                                                                     ##
@@ -89,7 +89,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## x: (m) a "Cache Matrix" object                                              ##
 ##                                                                             ##
 ## Output:                                                                     ##
-## Retruns a 'matrix' inside a 'list' object which label indicates the data    ##
+## Returns a 'matrix' inside a 'list' object which label indicates the data    ##
 ## source (computed vs read).                                                  ##
 #################################################################################
 cacheSolve <- function(x, ...) {

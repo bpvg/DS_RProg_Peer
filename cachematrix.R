@@ -49,17 +49,25 @@ makeCacheMatrix <- function(x = matrix()) {
       
       ### Computes, stores in cache and returns the Inverse Matrix
       ComputeInverse <- function(){
+            #Since we were told to assume the matrix provided will always be 
+            #inversible I won't test for square matrix and singularity. I just 
+            #make sure it exists and has at least 1 row and 1 column.
+            print(x)
+            if (!is.matrix(x)) stop("input should be a 'matrix'.")
+            if (min(dim(x))==0) stop("input should have at least 1 row and 1 column")
             IsCached <<- TRUE  #I'm quite optimistic: solve() may fail for some reason!
             CacheData <<- solve(x)
       }
 
-      ### Sets Inverse Matrix from an outside input
+      ### Sets Inverse Matrix from an outside input (Actually it can be used to 
+      ### store any matrix in cache!! uhhh! should fix this later!)
       SetInverse <- function(InvMatrix){
+            if (!is.matrix(InvMatrix)) stop("input should be a 'matrix'.")
             IsCached <<- TRUE  
             CacheData <<- InvMatrix
       } 
       
-      ### Reads Inverse Matrix from Cache
+      ### Returns Inverse Matrix from Cache
       GetInverse <- function(){
             CacheData
       }  

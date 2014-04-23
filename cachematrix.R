@@ -52,7 +52,6 @@ makeCacheMatrix <- function(x = matrix()) {
             #Since we were told to assume the matrix provided will always be 
             #inversible I won't test for square matrix and singularity. I just 
             #make sure it exists and has at least 1 row and 1 column.
-            print(x)
             if (!is.matrix(x)) stop("input should be a 'matrix'.")
             if (min(dim(x))==0) stop("input should have at least 1 row and 1 column")
             IsCached <<- TRUE  #I'm quite optimistic: solve() may fail for some reason!

@@ -32,6 +32,7 @@ makeCacheMatrix <- function(x = matrix()) {
       ##Creating Object's interface and properties
       ### Sets input matrix
       SetMatrix <-function(Matrix){
+            if (!is.matrix(Matrix)) stop("input should be a 'matrix'.")
             x <<-Matrix
             CacheData <<- matrix() #Clean Cache data when input matrix changes
             IsCached <<-FALSE #Clean Cache Status
@@ -58,10 +59,11 @@ makeCacheMatrix <- function(x = matrix()) {
             CacheData <<- solve(x)
       }
 
-      ### Sets Inverse Matrix from an outside input (Actually it can be used to 
-      ### store any matrix in cache!! uhhh! should fix this later!)
+      ### Sets Inverse Matrix from an outside input
       SetInverse <- function(InvMatrix){
             if (!is.matrix(InvMatrix)) stop("input should be a 'matrix'.")
+            #Tests if {A}*{A-1}=={I}.
+            if(!identical(InvMatrix%*%x,diag(nrow(x)))) stop("this is not the right inverse matrix!")
             IsCached <<- TRUE  
             CacheData <<- InvMatrix
       } 

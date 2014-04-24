@@ -1,5 +1,5 @@
 #################################################################################
-## The present set of functins are intended to allow computing the inverse of  ##
+## The present set of functions are intended to allow computing the inverse of ##
 ## a given matrix and store this result in memory for later retrieval without  ##
 ## new computations.                                                           ##
 ##                                                                             ##
@@ -18,8 +18,8 @@
 ## x: (o) the matrix for which we want to compute the inverse                  ##
 ##                                                                             ##
 ## Output:                                                                     ##
-## Retruns a set of functions inside a 'list' object which can be used to      ##
-## access and manipulate the object's variables and envirnoment.               ##                                       ##
+## Returns a set of functions inside a 'list' object which can be used to      ##
+## access and manipulate the object's variables and environment.               ##
 #################################################################################
 makeCacheMatrix <- function(x = matrix()) {
       
@@ -51,10 +51,10 @@ makeCacheMatrix <- function(x = matrix()) {
       ### Computes, stores in cache and returns the Inverse Matrix
       ComputeInverse <- function(){
             #Since we were told to assume the matrix provided will always be 
-            #inversible I won't test for square matrix and singularity. I just 
+            #invertible I won't test for square matrix and singularity. I just 
             #make sure it exists and has at least 1 row and 1 column.
             if (!is.matrix(x)) stop("input should be a 'matrix'.")
-            if (min(dim(x))==0) stop("input should have at least 1 row and 1 column")
+            if (min(dim(x))==0) stop("input should have at least 1 row and 1 column.")
             IsCached <<- TRUE  #I'm quite optimistic: solve() may fail for some reason!
             CacheData <<- solve(x)
       }
@@ -125,10 +125,10 @@ cacheSolve <- function(x, ...) {
 ## Testing Function                                                            ##
 ##                                                                             ##
 ## Inputs:                                                                     ##
-## size: (o) a sizexsize matriz will be used to measure compute vs read time   ##
+## size: (o) a sizexsize matrix will be used to measure compute vs read time   ##
 ##                                                                             ##
 ## Output:                                                                     ##
-## a list with time comsumption satistics for compute vs read                  ##
+## a list with time consumption statistics for compute vs read                 ##
 #################################################################################
 # Q: Is it that faster?
 # A: Yehh! It looks it is! ;)

@@ -54,8 +54,12 @@ makeCacheMatrix <- function(x = matrix()) {
             if (min(dim(x))==0) stop("input should have at least 1 row and 1 column.")
             if (nrow(x)!=ncol(x)) stop ("input should be a square matrix.")
             if (det(x)==0) stop("input is a singular matrix - it cannot be inverted.")
-            IsCached <<- TRUE  #I'm quite optimistic: solve() may fail for some reason!
             CacheData <<- solve(x)
+            if (!identical(CacheData%*%x,diag(nrow(x)))){
+                  stop("something went wrong while computing inverse matrix.")
+            } else {
+                  IsCached <<- TRUE 
+            }
       }
 
       ### Sets Inverse Matrix from an outside input

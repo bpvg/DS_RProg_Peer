@@ -50,11 +50,13 @@ makeCacheMatrix <- function(x = matrix()) {
       
       ### Computes, stores in cache and returns the Inverse Matrix
       ComputeInverse <- function(){
+            ##Test if matrix exists, is square and is not singular
             if (!is.matrix(x)) stop("input should be a 'matrix'.")
             if (min(dim(x))==0) stop("input should have at least 1 row and 1 column.")
             if (nrow(x)!=ncol(x)) stop ("input should be a square matrix.")
             if (det(x)==0) stop("input is a singular matrix - it cannot be inverted.")
-            CacheData <<- solve(x)
+            CacheData <<- solve(x)  #compute inverse
+            ## tests if we got the right inverse and then updates cache status
             if (!identical(CacheData%*%x,diag(nrow(x)))){
                   stop("something went wrong while computing inverse matrix.")
             } else {
